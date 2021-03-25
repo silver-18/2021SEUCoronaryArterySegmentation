@@ -2,26 +2,18 @@ from mayavi.core.ui.api import MayaviScene, MlabSceneModel, SceneEditor
 from traitsui.api import View, Item
 from traits.api import HasTraits, Instance
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
-import numpy as np
-import time
-import os
+from PyQt5.QtCore import QThread, pyqtSignal, QTimer
 from mayavi import mlab
+import numpy as np
+import os
 import torch
+import time
 
 from mainwidget import Ui_MainWidget
 from Predict import predict
-
 from Unet import UNet
 
 os.environ['QT_API'] = 'pyqt5'
-
-
-class Visualization(HasTraits):
-    scene = Instance(MlabSceneModel, ())
-    view = View(Item('scene', editor=SceneEditor(scene_class=MayaviScene),
-                     show_label=False),
-                resizable=True  # We need this to resize with the parent widget
-                )
 
 
 class MainWidget(QWidget, Ui_MainWidget):
@@ -35,6 +27,7 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.mayaviWidget.setParent(self.groupBoxMayavi)
         self.verticalLayout.addWidget(self.mayaviWidget)
         self.visualization.scene.mlab.figure(figure=mlab.gcf(), bgcolor=(1, 1, 1))
+        self.visualization.scene.mlab.clf()
         # flag
         self.isLabelDrawn = False
         self.isPredictDrawn = False
@@ -44,7 +37,6 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.image = None
         self.background = None
         self.file_name = None
-        # self.raw_mean = np.mean(self.raw)
         self.shape = None
         self.label = None
         self.LabelObj = None
@@ -52,12 +44,21 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.Unet = UNet(n_channels=1, n_classes=1)
         self.Unet.load_state_dict(torch.load(os.path.join("Data/Evaluation.dat")))
         self.PredictResult = None
+        self.StateLabelDotCounter = 1
+        # Timer
+        self.timer = QTimer()
+        self.timer.start(1000)
+        # Thread edit
+        # self.predictThread = ShowPredictThread()
+        # self.View3DThread = View3DThread()
+        # self.predictThread.state_signal.connect(self.slotStateLabel)
+        # self.View3DThread.state_signal.connect(self.slotStateLabel)
         # selectBtn connect
         self.LoadData.clicked.connect(self.slotChooseRawFile)
-        # ViewBtn edit
+        # ViewBtn connect
         self.View3D.clicked.connect(self.slotView3D)
         self.ViewSlice.clicked.connect(self.slotViewSlice)
-        self.ShowLabel.clicked.connect(self.slotViewLabel)
+        self.ShowLabel.clicked.connect(self.slotShowLabel)
         self.HideLabel.clicked.connect(self.slotHideLabel)
         self.ShowPredict.clicked.connect(self.slotShowPredict)
         self.HidePredict.clicked.connect(self.slotHidePredict)
@@ -92,15 +93,13 @@ class MainWidget(QWidget, Ui_MainWidget):
             QMessageBox.about(self, "LoadData", "No Raw File Selected!")
 
     def slotView3D(self):
-        # mlab
-        # close render to speed up
-        self.visualization.scene.disable_render = True
+        time_start = time.time()
+        self.StateLabel.setText("Drawing...")
+        QApplication.processEvents()
         self.visualization.scene.mlab.clf()
         self.visualization.scene.mlab.contour3d(self.background, color=(1, 1, 0), opacity=0.5)
-        self.visualization.scene.disable_render = False
-        # progressBar
-        self.progressBar.reset()
-        self.progressBar.isEnabled()
+        time_end = time.time()
+        self.StateLabel.setText("Drawing Done in " + str(round(time_end - time_start, 2)) + " sec!")
         # update flags
         self.isLabelDrawn = False
         self.isPredictDrawn = False
@@ -119,9 +118,16 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.isSliceDrawn = True
         self.isContourDrawn = False
 
-    def slotViewLabel(self):
+    def slotShowLabel(self):
         if not self.isLabelDrawn:
+            time_start = time.time()
+            self.StateLabel.setText("Drawing...")
+            QApplication.processEvents()
             self.LabelObj = self.visualization.scene.mlab.contour3d(self.label, color=(0, 0, 1), opacity=0.9)
+            time_end = time.time()
+            self.StateLabel.setText("Drawing Done in " + str(round(time_end - time_start, 2)) + " sec!")
+
+            # update flags
             self.isLabelDrawn = True
         else:
             self.LabelObj.visible = True
@@ -131,8 +137,18 @@ class MainWidget(QWidget, Ui_MainWidget):
 
     def slotShowPredict(self):
         if not self.isPredictDrawn:
+            time_start = time.time()
+            self.StateLabel.setText("Predicting...")
+            QApplication.processEvents()
             self.PredictResult = predict(self.Unet, self.shape, self.image, 1)
-            self.PredictObj = self.visualization.scene.mlab.contour3d(self.PredictResult, color=(1, 0, 0), opacity=0.9)
+            self.StateLabel.setText("Drawing...")
+            QApplication.processEvents()
+            self.PredictObj = self.visualization.scene.mlab.contour3d(self.PredictResult,
+                                                                      color=(1, 0, 0),
+                                                                      opacity=1)
+            time_end = time.time()
+            self.StateLabel.setText("Prediction & Drawing Done in " + str(round(time_end - time_start, 2)) + " sec!")
+            # update flags
             self.isPredictDrawn = True
         else:
             self.PredictObj.visible = True
@@ -148,8 +164,68 @@ class MainWidget(QWidget, Ui_MainWidget):
         else:
             QMessageBox.about(self, "SaveFig", "No result to save!")
 
-    def slotProcessBar(self, percent):
-        self.progressBar.setValue(percent)
+    def slotStateLabel(self, text):
+        self.StateLabel.setText(text)
+        QApplication.processEvents()
+
+    def slotStateLabelUpdate(self):
+        print("activate")
+        self.StateLabelDotCounter = self.StateLabelDotCounter + 1
+        if self.StateLabelDotCounter == 4:
+            self.StateLabelDotCounter = 1
+        label_text = self.StateLabel.text().strip('.')
+        for i in range(self.StateLabelDotCounter):
+            label_text = label_text + "."
+        self.StateLabel.setText(label_text)
+
+
+class Visualization(HasTraits):
+    scene = Instance(MlabSceneModel, ())
+    view = View(Item('scene', editor=SceneEditor(scene_class=MayaviScene),
+                     show_label=False),
+                resizable=True  # We need this to resize with the parent widget
+                )
+
+
+# class ShowPredictThread(QThread):
+#     state_signal = pyqtSignal(str)
+#
+#     def __init__(self):
+#         super(ShowPredictThread, self).__init__()
+#
+#     def run(self):
+#         main_window.ShowPredict.setDisabled(True)
+#         main_window.timer.timeout.connect(main_window.slotStateLabelUpdate)
+#         self.state_signal.emit("Predicting.3")
+#         main_window.PredictResult = predict(main_window.Unet, main_window.shape, main_window.image, 1)
+#         main_window.PredictObj = main_window.visualization.scene.mlab.contour3d(main_window.PredictResult,
+#                                                                                 color=(1, 0, 0),
+#                                                                                 opacity=0.9)
+#         self.state_signal.emit("Prediction & Drawing Done!")
+#         main_window.ShowPredict.setEnabled(True)
+#         main_window.timer.stop()
+#         main_window.timer.disconnect()
+#         self.quit()
+#         self.wait()
+
+
+# class View3DThread(QThread):
+#     state_signal = pyqtSignal(str)
+#
+#     def __init__(self):
+#         super(View3DThread, self).__init__()
+#
+#     def run(self):
+#         main_window.View3D.setDisabled(True)
+#         main_window.timer.timeout.connect(main_window.slotStateLabelUpdate)
+#         self.state_signal.emit("Drawing.")
+#         main_window.visualization.scene.mlab.contour3d(main_window.background, color=(1, 1, 0), opacity=0.5)
+#         self.state_signal.emit("Drawing Done!")
+#         main_window.View3D.setEnabled(True)
+#         main_window.timer.stop()
+#         main_window.timer.disconnect()
+#         self.quit()
+#         self.wait()
 
 
 if __name__ == "__main__":

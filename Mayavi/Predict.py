@@ -1,17 +1,6 @@
 import numpy as np
 import torch
-from PyQt5.QtCore import QObject, pyqtSignal
-
-
-# class SignalProgressBar(QObject):
-#     signal = pyqtSignal(int)
-#
-#     def connect(self, slot):
-#         self.signal.connect(slot)
-#
-#     def emit(self, precent):
-#         self.signal.emit(precent)
-
+import time
 
 def reshape_img(image, z, y, x):
     out = np.zeros([z, y, x], dtype=np.float32)
@@ -29,11 +18,9 @@ def read_file_from_txt(txt_path):
 
 
 def predict(model, original_shape, image, num_classes):
-    # # signal of progressBar
-    # signalProgressBar = SignalProgressBar()
-    # signalProgressBar.signal.connect(MainWidget.slotProcessBar)
-    # signalProgressBar.signal.emit(0)
     print("Predict test data")
+    time_start = time.time()
+
     model.eval()
 
     if torch.cuda.is_available():
@@ -174,9 +161,6 @@ def predict(model, original_shape, image, num_classes):
         n_map[:, :, z - shape[0]:z, y - shape[1]:y,
         k * stride_z:k * stride_z + shape[2]] += map_kernal
 
-    # # emit
-    # signalProgressBar.signal.emit(70)
-
     image_i = image[:, :, z - shape[0]:z, y - shape[1]:y, x - shape[2]:x]
     image_i = torch.from_numpy(image_i)
     if torch.cuda.is_available():
@@ -189,5 +173,10 @@ def predict(model, original_shape, image, num_classes):
 
     predict = predict / n_map
     result = predict[0, 0, 0:o, 0:p, 0:q]
-    print("Prediction Done")
+
+    # 0-1 normalization
+    result = np.where(result > 0.5, 1, 0)
+
+    time_end = time.time()
+    print("Prediction Done in " + str(round(time_end - time_start, 2)) + " sec")
     return result
