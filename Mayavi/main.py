@@ -108,11 +108,11 @@ class MainWidget(QWidget, Ui_MainWidget):
 
     def slotViewSlice(self):
         self.visualization.scene.mlab.clf()
-        mlab.volume_slice(self.background, colormap='gray',
+        mlab.volume_slice(self.image, colormap='gray',
                           plane_orientation='x_axes', slice_index=0)  # 设定x轴切面
-        mlab.volume_slice(self.background, colormap='gray',
+        mlab.volume_slice(self.image, colormap='gray',
                           plane_orientation='y_axes', slice_index=0)  # 设定y轴切面
-        mlab.volume_slice(self.background, colormap='gray',
+        mlab.volume_slice(self.image, colormap='gray',
                           plane_orientation='z_axes', slice_index=0)  # 设定z轴切面
         # update flags
         self.isSliceDrawn = True

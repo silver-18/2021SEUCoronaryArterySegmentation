@@ -114,7 +114,7 @@ class Ui_MainWidget(object):
         self.SaveFig.setObjectName("SaveFig")
         self.verticalLayout_2.addWidget(self.SaveFig)
         self.StateLabel = QtWidgets.QLabel(self.groupBox)
-        self.StateLabel.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.StateLabel.setMaximumSize(QtCore.QSize(16777215, 60))
         self.StateLabel.setText("")
         self.StateLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.StateLabel.setObjectName("StateLabel")
@@ -144,7 +144,7 @@ class Ui_MainWidget(object):
 
     def retranslateUi(self, MainWidget):
         _translate = QtCore.QCoreApplication.translate
-        MainWidget.setWindowTitle(_translate("MainWidget", "ViewRaw"))
+        MainWidget.setWindowTitle(_translate("MainWidget", "Lumen Seg"))
         self.LoadData.setText(_translate("MainWidget", "LoadData"))
         self.ImagePath.setText(_translate("MainWidget", "ImagePath"))
         self.BackgroundPath.setText(_translate("MainWidget", "BackgroundPath"))
