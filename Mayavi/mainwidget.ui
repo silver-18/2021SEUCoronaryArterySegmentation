@@ -16,8 +16,13 @@
     <height>768</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Fira Code</family>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Lumen Seg</string>
+   <string>ArteryLumenSeg</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <item>
@@ -40,11 +45,23 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QPushButton" name="LoadData">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>300</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Fira Code</family>
+          <pointsize>9</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>LoadData</string>
@@ -58,6 +75,12 @@
           <width>16777215</width>
           <height>100</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Fira Code</family>
+          <pointsize>8</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>ImagePath</string>
@@ -78,11 +101,19 @@
           <height>100</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>BackgroundPath</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -93,6 +124,11 @@
           <width>16777215</width>
           <height>100</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>LabelPath</string>
@@ -200,6 +236,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="View3D">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>View3D</string>
         </property>
@@ -207,6 +249,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="ViewSlice">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>ViewSlice</string>
         </property>
@@ -214,12 +262,24 @@
       </item>
       <item>
        <widget class="QGroupBox" name="groupBoxView">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>220</height>
+         </size>
+        </property>
         <property name="title">
          <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="3" column="1">
           <widget class="QPushButton" name="HideLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>HideLabel</string>
            </property>
@@ -227,6 +287,12 @@
          </item>
          <item row="3" column="0">
           <widget class="QPushButton" name="ShowLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>ShowLabel</string>
            </property>
@@ -234,6 +300,12 @@
          </item>
          <item row="2" column="1">
           <widget class="QPushButton" name="HidePredict">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>HidePredict</string>
            </property>
@@ -241,6 +313,12 @@
          </item>
          <item row="2" column="0">
           <widget class="QPushButton" name="ShowPredict">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>ShowPredict</string>
            </property>
@@ -251,6 +329,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="SaveFig">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>SaveFig</string>
         </property>
@@ -269,6 +353,9 @@
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

@@ -1,4 +1,5 @@
 from mayavi.core.ui.api import MayaviScene, MlabSceneModel, SceneEditor
+from tvtk.pyface.api import Scene
 from traitsui.api import View, Item
 from traits.api import HasTraits, Instance
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
@@ -26,7 +27,7 @@ class MainWidget(QWidget, Ui_MainWidget):
             parent=self, kind='subpanel').control
         self.mayaviWidget.setParent(self.groupBoxMayavi)
         self.verticalLayout.addWidget(self.mayaviWidget)
-        self.visualization.scene.mlab.figure(figure=mlab.gcf(), bgcolor=(1, 1, 1))
+        # self.visualization.scene.mlab.figure(figure=mlab.gcf(), bgcolor=(1, 1, 1))
         self.visualization.scene.mlab.clf()
         # flag
         self.isLabelDrawn = False
@@ -97,7 +98,8 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.StateLabel.setText("Drawing...")
         QApplication.processEvents()
         self.visualization.scene.mlab.clf()
-        self.visualization.scene.mlab.contour3d(self.background, color=(1, 1, 0), opacity=0.5)
+        contour = self.visualization.scene.mlab.contour3d(self.background, color=(1, 1, 0), opacity=0.5)
+        self.visualization.scene.mlab.axes(xlabel='x', ylabel='y', zlabel='z', line_width=4)
         time_end = time.time()
         self.StateLabel.setText("Drawing Done in " + str(round(time_end - time_start, 2)) + " sec!")
         # update flags
@@ -181,7 +183,7 @@ class MainWidget(QWidget, Ui_MainWidget):
 
 class Visualization(HasTraits):
     scene = Instance(MlabSceneModel, ())
-    view = View(Item('scene', editor=SceneEditor(scene_class=MayaviScene),
+    view = View(Item('scene', editor=SceneEditor(scene_class=Scene),
                      show_label=False),
                 resizable=True  # We need this to resize with the parent widget
                 )
@@ -227,9 +229,25 @@ class Visualization(HasTraits):
 #         self.quit()
 #         self.wait()
 
+# Support Qss
+class QssReader:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def readQss(style):
+        with open(style, 'r') as f:
+            return f.read()
+
 
 if __name__ == "__main__":
     app = QApplication.instance()
     main_window = MainWidget()
+    # qss
+    styleFile = "./qss/ElegantDark.qss"
+    qssStyle = QssReader.readQss(styleFile)
+    app.setStyleSheet(qssStyle)
+    main_window.setStyleSheet(qssStyle)
+
     main_window.show()
     app.exec_()
