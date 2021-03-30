@@ -2,7 +2,7 @@ from mayavi.core.ui.api import MayaviScene, MlabSceneModel, SceneEditor
 from tvtk.pyface.api import Scene
 from traitsui.api import View, Item
 from traits.api import HasTraits, Instance
-from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox, QColorDialog
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer
 from mayavi import mlab
 import numpy as np
@@ -40,6 +40,8 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.file_name = None
         self.shape = None
         self.label = None
+        # self.predict_color = None
+        # self.label_color = None
         self.LabelObj = None
         self.PredictObj = None
         self.Unet = UNet(n_channels=1, n_classes=1)
@@ -47,8 +49,8 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.PredictResult = None
         self.StateLabelDotCounter = 1
         # Timer
-        self.timer = QTimer()
-        self.timer.start(1000)
+        # self.timer = QTimer()
+        # self.timer.start(1000)
         # Thread edit
         # self.predictThread = ShowPredictThread()
         # self.View3DThread = View3DThread()
@@ -64,6 +66,8 @@ class MainWidget(QWidget, Ui_MainWidget):
         self.ShowPredict.clicked.connect(self.slotShowPredict)
         self.HidePredict.clicked.connect(self.slotHidePredict)
         self.SaveFig.clicked.connect(self.slotSaveFig)
+        # self.PredictColor.clicked.connect(self.slotPredictColor)
+        # self.LabelColor.clicked.connect(self.slotLabelColor)
 
     def slotChooseRawFile(self):
         # 选择文件
@@ -180,6 +184,13 @@ class MainWidget(QWidget, Ui_MainWidget):
             label_text = label_text + "."
         self.StateLabel.setText(label_text)
 
+    # def slotPredictColor(self):
+    #     self.predict_color = QColorDialog.getColor()
+    #     print(self.predict_color)
+    #
+    # def slotLabelColor(self):
+    #     pass
+
 
 class Visualization(HasTraits):
     scene = Instance(MlabSceneModel, ())
@@ -229,25 +240,24 @@ class Visualization(HasTraits):
 #         self.quit()
 #         self.wait()
 
-# Support Qss
-class QssReader:
-    def __init__(self):
-        pass
-
-    @staticmethod
-    def readQss(style):
-        with open(style, 'r') as f:
-            return f.read()
+# # Support Qss
+# class QssReader:
+#     def __init__(self):
+#         pass
+#
+#     @staticmethod
+#     def readQss(style):
+#         with open(style, 'r') as f:
+#             return f.read()
 
 
 if __name__ == "__main__":
     app = QApplication.instance()
     main_window = MainWidget()
-    # qss
-    styleFile = "./qss/ElegantDark.qss"
-    qssStyle = QssReader.readQss(styleFile)
-    app.setStyleSheet(qssStyle)
-    main_window.setStyleSheet(qssStyle)
-
+    # # qss
+    # styleFile = "./qss/ElegantDark.qss"
+    # qssStyle = QssReader.readQss(styleFile)
+    # app.setStyleSheet(qssStyle)
+    # main_window.setStyleSheet(qssStyle)
     main_window.show()
     app.exec_()
