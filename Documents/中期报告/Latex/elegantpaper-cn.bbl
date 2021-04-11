@@ -1,0 +1,161 @@
+\begin{thebibliography}{23}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}\else
+  \providecommand\doi[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}\fi
+
+\bibitem[A et~al.(2016)A, A, B, and A]{1}
+A~A~K, A~A~B, B~A~M, et~al.
+\newblock A coronary artery segmentation method based on multiscale analysis
+  and region growing - sciencedirect\allowbreak[J].
+\newblock Computerized Medical Imaging and Graphics, 2016, 48:\penalty0 49-61.
+
+\bibitem[Sukanya et~al.(2020{\natexlab{a}})Sukanya, Rajeswari, and Murugan]{2}
+SUKANYA~A, RAJESWARI~R, MURUGAN~K~S.
+\newblock Region based coronary artery segmentation using modified frangi's
+  vesselness measure\allowbreak[J].
+\newblock International Journal of Imaging Systems and Technology, 2020,
+  30\penalty0 (3).
+
+\bibitem[Ma et~al.(2020)Ma, Yang, and Zhao]{3}
+MA~G, YANG~J, ZHAO~H.
+\newblock A coronary artery segmentation method based on region growing with
+  variable sector search area\allowbreak[J].
+\newblock Technology and health care: official journal of the European Society
+  for Engineering and Medicine, 2020, 28\penalty0 (2):\penalty0 1-10.
+
+\bibitem[黄山程晓光(2020)]{4}
+黄山程晓光.
+\newblock 基于水平集方法的冠状动脉CT图像分割\allowbreak[J].
+\newblock 北京生物医学工程, 2020, v.39\penalty0 (06):\penalty0
+  23-27+35.
+
+\bibitem[Chaolu et~al.(2016)Chaolu, Feng, Yang, and Hu]{5}
+CHAOLU, FENG, YANG, et~al.
+\newblock Segmentation of coronary artery using region based level set with
+  edge preservation\allowbreak[J].
+\newblock Journal of Medical Imaging and Health Informatics, 2016, 6\penalty0
+  (7):\penalty0 1727-1731.
+
+\bibitem[Sukanya et~al.(2020{\natexlab{b}})Sukanya, Rajeswari, and Murugan]{6}
+SUKANYA~A, RAJESWARI~R, MURUGAN~K~S.
+\newblock Region based coronary artery segmentation using modified frangi's
+  vesselness measure\allowbreak[J].
+\newblock International Journal of Imaging Systems and Technology, 2020,
+  30\penalty0 (3).
+
+\bibitem[Yang et~al.(2012)Yang, Kitslaar, Frenay, Broersen, Boogers, Bax,
+  Reiber, and Dijkstra]{7}
+YANG~G, KITSLAAR~P, FRENAY~M, et~al.
+\newblock Automatic centerline extraction of coronary arteries in coronary
+  computed tomographic angiography\allowbreak[J].
+\newblock The international journal of cardiovascular imaging, 2012,
+  28\penalty0 (4):\penalty0 921-933.
+
+\bibitem[Mille et~al.(2009)Mille, J, Cohen, and LD]{8}
+MILLE, J, COHEN, et~al.
+\newblock Deformable tree models for 2d and 3d branching structures
+  extraction\allowbreak[J].
+\newblock Proc Cvpr IEEE, 2009.
+
+\bibitem[Toledo et~al.(2002)Toledo, Orriols, Binefa, Radeva, and Villanueva]{9}
+TOLEDO~R, ORRIOLS~X, BINEFA~X, et~al.
+\newblock Tracking elongated structures using statistical
+  snakes\allowbreak[C]//\allowbreak
+Proceedings IEEE Conference on Computer Vision and Pattern Recognition. CVPR
+  2000 (Cat. No.PR00662).
+\newblock [S.l.: s.n.], 2002.
+
+\bibitem[Salahuddin et~al.(2020)Salahuddin, Lenga, and Nickisch]{10}
+SALAHUDDIN~Z, LENGA~M, NICKISCH~H.
+\newblock Multi-resolution 3d convolutional neural networks for automatic
+  coronary centerline extraction in cardiac ct angiography scans\allowbreak[J].
+\newblock 2020.
+
+\bibitem[iek et~al.(2016)iek, Abdulkadir, Lienkamp, Brox, and Ronneberger]{11}
+IEK~Z, ABDULKADIR~A, LIENKAMP~S~S, et~al.
+\newblock 3d u-net: Learning dense volumetric segmentation from sparse
+  annotation\allowbreak[J].
+\newblock Springer, Cham, 2016.
+
+\bibitem[Zhou et~al.(2018)Zhou, Siddiquee, Tajbakhsh, and Liang]{12}
+ZHOU~Z, SIDDIQUEE~M, TAJBAKHSH~N, et~al.
+\newblock Unet++: A nested u-net architecture for medical image
+  segmentation\allowbreak[J].
+\newblock 2018.
+
+\bibitem[Isensee et~al.(2019)Isensee, Jger, Kohl, Petersen, and Maier-Hein]{13}
+ISENSEE~F, JGER~P~F, KOHL~S, et~al.
+\newblock Automated design of deep learning methods for biomedical image
+  segmentation\allowbreak[J].
+\newblock 2019.
+
+\bibitem[Guo et~al.(2019)Guo, Bai, Yi, Xin, and Yin]{14}
+GUO~Z, BAI~J, YI~L, et~al.
+\newblock Deepcenterline: A multi-task fully convolutional network for
+  centerline extraction\allowbreak[J].
+\newblock Springer, Cham, 2019.
+
+\bibitem[Chen et~al.(2019)Chen, Lin, Wang, Lee, and Chen]{15}
+CHEN~Y~C, LIN~Y~C, WANG~C~P, et~al.
+\newblock Coronary artery segmentation in cardiac ct angiography using 3d
+  multi-channel u-net\allowbreak[J].
+\newblock 2019.
+
+\bibitem[16(2019)]{16}
+Graph convolutional networks for coronary artery segmentation in cardiac ct
+  angiography\allowbreak[J].
+\newblock Springer, Cham, 2019.
+
+\bibitem[Shi et~al.(2020)Shi, Du, Chen, Zhang, and Xu]{17}
+SHI~X, DU~T, CHEN~S, et~al.
+\newblock Uenet: A novel generative adversarial network for angiography image
+  segmentation\allowbreak[C]//\allowbreak
+2020 42nd Annual International Conference of the IEEE Engineering in Medicine
+  and Biology Society (EMBC) in conjunction with the 43rd Annual Conference of
+  the Canadian Medical and Biological Engineering Society.
+\newblock [S.l.: s.n.], 2020.
+
+\bibitem[Chen et~al.(2014)Chen, Papandreou, Kokkinos, Murphy, and Yuille]{18}
+CHEN~L~C, PAPANDREOU~G, KOKKINOS~I, et~al.
+\newblock Semantic image segmentation with deep convolutional nets and fully
+  connected crfs\allowbreak[J].
+\newblock arXiv, 2014.
+
+\bibitem[Zhu et~al.(2020)Zhu, Cheng, Wang, Chen, and Lu]{19}
+ZHU~X, CHENG~Z, WANG~S, et~al.
+\newblock Coronary angiography image segmentation based on
+  pspnet\allowbreak[J].
+\newblock Computer Methods and Programs in Biomedicine, 2020, 200\penalty0
+  (4):\penalty0 105897.
+
+\bibitem[Kong et~al.(2019)Kong, Wang, Bai, Lu, and Yin]{20}
+KONG~B, WANG~X, BAI~J, et~al.
+\newblock Learning tree-structured representation for 3d coronary artery
+  segmentation\allowbreak[J].
+\newblock Computerized Medical Imaging and Graphics, 2019, 80:\penalty0 101688.
+
+\bibitem[Shin et~al.(2018)Shin, Lee, Yun, and Lee]{21}
+SHIN~S~Y, LEE~S, YUN~I~D, et~al.
+\newblock Deep vessel segmentation by learning graphical
+  connectivity\allowbreak[J].
+\newblock 2018.
+
+\bibitem[Zhang et~al.(2020)Zhang, Wang, Xie, Zhang, and Gu]{22}
+ZHANG~J, WANG~G, XIE~H, et~al.
+\newblock Weakly supervised vessel segmentation in x-ray angiograms by
+  self-paced learning from noisy labels with suggestive
+  annotation\allowbreak[J].
+\newblock Neurocomputing, 2020.
+
+\bibitem[Yu et~al.(2019)Yu, Zhao, Gong, Wang, Li, Yang, Dong, Li, and
+  Zhang]{23}
+YU~F, ZHAO~J, GONG~Y, et~al.
+\newblock Annotation-free cardiac vessel segmentation via knowledge transfer
+  from retinal images\allowbreak[J].
+\newblock arXiv, 2019.
+
+\end{thebibliography}

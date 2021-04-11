@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: elegantpaper-cn.aux
+The style file: gbt7714-numerical.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: wpref.bib
+Warning--empty journal in 10
+Warning--empty journal in 12
+Warning--empty journal in 13
+Warning--empty journal in 15
+Warning--empty author in 16
+Warning--empty journal in 21
+You've used 23 entries,
+            4281 wiz_defined-function locations,
+            982 strings with 10487 characters,
+and the built_in function-call counts, 139350 in all, are:
+= -- 2602
+> -- 16589
+< -- 20194
++ -- 5557
+- -- 1316
+* -- 854
+:= -- 19336
+add.period$ -- 68
+call.type$ -- 23
+change.case$ -- 108
+chr.to.int$ -- 5017
+cite$ -- 30
+duplicate$ -- 421
+empty$ -- 1060
+format.name$ -- 452
+if$ -- 36000
+int.to.chr$ -- 2
+int.to.str$ -- 24
+missing$ -- 0
+newline$ -- 126
+num.names$ -- 66
+pop$ -- 6157
+preamble$ -- 1
+purify$ -- 23
+quote$ -- 0
+skip$ -- 15601
+stack$ -- 0
+substring$ -- 6465
+swap$ -- 84
+text.length$ -- 257
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 295
+warning$ -- 6
+while$ -- 313
+width$ -- 0
+write$ -- 303
+(There were 6 warnings)
