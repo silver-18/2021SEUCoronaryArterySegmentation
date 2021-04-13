@@ -130,3 +130,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Documents/计算机设计竞赛/省赛/TyporaImg
+/Documents/演示视频/Adobe Premiere Pro Auto-Save/*.prproj
+/Documents/演示视频/*.prproj
+/Documents/演示视频/第一版/*.mp4
+/Documents/演示视频/第一版/*.avi
+/Documents/演示视频/第二版/*.mp4
+/Documents/演示视频/第二版/*.rar
+/Documents/演示视频/第二版/*.avi
+/Documents/演示视频/解说音频/*.wav
