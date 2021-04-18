@@ -15,11 +15,11 @@
 \contentsline {paragraph}{PSPNet}{9}{section*.12}%
 \contentsline {subsubsection}{\numberline {1.4.2}Deep-learning prior knowledge}{10}{subsubsection.1.4.2}%
 \contentsline {paragraph}{Tree structures}{10}{section*.13}%
-\contentsline {paragraph}{Graphical structures}{11}{section*.15}%
+\contentsline {paragraph}{Graphical structures}{10}{section*.15}%
 \contentsline {subsubsection}{\numberline {1.4.3}Deep-learning strategies}{11}{subsubsection.1.4.3}%
 \contentsline {paragraph}{Weakly-supervised segmentation}{11}{section*.16}%
 \contentsline {paragraph}{Knowledge Transfer}{11}{section*.17}%
-\contentsline {subsection}{\numberline {1.5}Future directions and developments}{12}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.5}Future directions and developments}{11}{subsection.1.5}%
 \contentsline {subsubsection}{\numberline {1.5.1}Combined traditional and deep-learning direction}{12}{subsubsection.1.5.1}%
 \contentsline {subsubsection}{\numberline {1.5.2}More diverse methods of supervision}{12}{subsubsection.1.5.2}%
 \contentsline {subsubsection}{\numberline {1.5.3}More schemes based on prior knowledge}{12}{subsubsection.1.5.3}%
@@ -32,12 +32,12 @@
 \contentsline {subsubsection}{\numberline {2.2.4}第四阶段：竞赛准备\& GUI界面编写调试}{17}{subsubsection.2.2.4}%
 \contentsline {subsection}{\numberline {2.3}项目取得成绩}{19}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}项目实际进度与预期}{19}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}项目开展遇到的问题}{19}{subsection.2.5}%
-\contentsline {section}{\numberline {3}项目后期工作展望}{19}{section.3}%
-\contentsline {subsection}{\numberline {3.1}GUI方向}{19}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}深度学习算法方向}{19}{subsection.3.2}%
-\contentsline {paragraph}{狭窄检测}{19}{section*.27}%
-\contentsline {paragraph}{深度监督}{20}{section*.28}%
-\contentsline {paragraph}{领域知识嵌入}{20}{section*.29}%
-\contentsline {paragraph}{损失函数设计}{20}{section*.30}%
-\contentsline {section}{\numberline {4}经费使用情况}{20}{section.4}%
+\contentsline {subsection}{\numberline {2.5}项目开展遇到的问题}{20}{subsection.2.5}%
+\contentsline {section}{\numberline {3}项目后期工作展望}{20}{section.3}%
+\contentsline {subsection}{\numberline {3.1}GUI方向}{20}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}深度学习算法方向}{20}{subsection.3.2}%
+\contentsline {paragraph}{深度监督}{20}{section*.27}%
+\contentsline {paragraph}{领域知识嵌入}{21}{section*.29}%
+\contentsline {paragraph}{损失函数设计}{21}{section*.31}%
+\contentsline {paragraph}{狭窄检测}{22}{section*.33}%
+\contentsline {section}{\numberline {4}经费使用情况}{22}{section.4}%
