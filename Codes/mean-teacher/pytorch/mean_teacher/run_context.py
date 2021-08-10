@@ -17,12 +17,12 @@ from collections import defaultdict
 
 
 class TrainLog:
-    """Saves training logs in Pandas msgpacks"""
+    """Saves training logs in Pandas pickle"""
 
     INCREMENTAL_UPDATE_TIME = 300
 
     def __init__(self, directory, name):
-        self.log_file_path = "{}/{}.msgpack".format(directory, name)
+        self.log_file_path = "{}/{}.pickle".format(directory, name)
         self._log = defaultdict(dict)
         self._log_lock = threading.RLock()
         self._last_update_time = time.time() - self.INCREMENTAL_UPDATE_TIME
@@ -35,7 +35,7 @@ class TrainLog:
 
     def save(self):
         df = self._as_dataframe()
-        df.to_msgpack(self.log_file_path, compress='zlib')
+        df.to_pickle(self.log_file_path, compression='gzip')
 
     def _record(self, step, col_val_dict):
         with self._log_lock:
@@ -55,7 +55,7 @@ class RunContext:
     def __init__(self, runner_file, run_idx):
         logging.basicConfig(level=logging.INFO, format='%(message)s')
         runner_name = os.path.basename(runner_file).split(".")[0]
-        self.result_dir = "{root}/{runner_name}/{date:%Y-%m-%d_%H:%M:%S}/{run_idx}".format(
+        self.result_dir = "{root}/{runner_name}/{date:%Y-%m-%d_%H-%M-%S}/{run_idx}".format(
             root='results',
             runner_name=runner_name,
             date=datetime.now(),
