@@ -121,11 +121,16 @@ class ResNet32x32(nn.Module):
             block, channels * 2, groups, layers[1], stride=2)
         self.layer3 = self._make_layer(
             block, channels * 4, groups, layers[2], stride=2)
-        self.avgpool = nn.AvgPool2d(8)
+        # self.avgpool = nn.AvgPool2d(8)
+        self.avgpool = nn.AvgPool2d(4)
         self.fc1 = nn.Linear(block.out_channels(
             channels * 4, groups), num_classes)
         self.fc2 = nn.Linear(block.out_channels(
             channels * 4, groups), num_classes)
+
+        # Memory Constrain
+        self.downSamp = nn.MaxPool2d(2)
+        self.upSamp = nn.Upsample(scale_factor=2, mode='bilinear')
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -159,11 +164,15 @@ class ResNet32x32(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
+        # Memory Constrain
+        x = self.downSamp(x)
+
         x = self.conv1(x)
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.avgpool(x)
+
         x = x.view(x.size(0), -1)
         return self.fc1(x), self.fc2(x)
 

@@ -8,3 +8,8 @@
     meters.update('class_loss', class_loss.data[0])
     IndexError: invalid index of a 0-dim tensor. Use `tensor.item()` in Python or `tensor.item<T>()` in C++ to convert a 0-dim tensor to a number
   - run_context.py msgpack已被pandas弃用 改为pickle
+
+- 8.12
+  - architectures.py class ResNet32x32(nn.Module) line 111
+    加入下采样层防止内存溢出
+    将最后的avgpool的kernel_size改为4
