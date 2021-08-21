@@ -15,7 +15,7 @@ class conv_branch(nn.Module):
 
         self.conv = nn.Conv3d(in_ch, out_ch, 3, padding=1)  # 定义卷积
 
-        self.gn = nn.GroupNorm(out_ch // 4, out_ch)  # 使用组归一化（你可以上网查一下批归一化batchnormal和组归一化groupnormal）
+        self.gn = nn.GroupNorm(out_ch // 4, out_ch)  # 使用组归一化
         self.relu = nn.ReLU(inplace=True)  # 激活函数
 
     def forward(self, x):  # 定义网络的一个顺序
