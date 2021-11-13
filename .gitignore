@@ -141,3 +141,6 @@ dmypy.json
 /Documents/演示视频/解说音频/*.wav
 /Documents/国省创申报/附件/*.mp4
 /Documents/国省创申报/附件/*.rar
+/Documents/演示视频/*.mp4
+/Documents/PPT/*.pptx
+/Codes/Unity
